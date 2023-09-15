@@ -1,0 +1,71 @@
+@import "./variables.scss";
+
+// BREAK POINTS
+@mixin mobile-width {
+    @media screen and (min-width: $mobile) {
+        @content;
+    }
+}
+
+@mixin tablet-width {
+    @media screen and (min-width: $tablet) {
+        @content;
+    }
+}
+
+@mixin desktop-width {
+    @media screen and (min-width: $desktop) {
+        @content;
+    }
+}
+
+// FONTS
+@mixin fraunces-300 {
+    font-family: "Fraunces", serif;
+    font-weight: 300;
+}
+
+@mixin fraunces-400 {
+    font-family: "Fraunces", serif;
+    font-weight: 400;
+}
+
+@mixin archivo-900 {
+    font-family: "Archivo", sans-serif;
+    font-weight: 900;
+}
+
+@mixin orbitron-400 {
+    font-family: "Orbitron", sans-serif;
+    font-weight: 400;
+}
+
+@mixin orbitron-700 {
+    font-family: "Orbitron", sans-serif;
+    font-weight: 700;
+}
+
+// TYPOGRAPHY
+@mixin title-1 {
+    @include fraunces-400;
+}
+
+@mixin title-2 {
+    @include archivo-900;
+}
+
+@mixin body-1 {
+    @include orbitron-400;
+}
+
+@mixin body-2 {
+    @include orbitron-400;
+}
+
+@mixin body-bold {
+    @include orbitron-700;
+}
+
+@mixin body-serif {
+    @include fraunces-300;
+}
