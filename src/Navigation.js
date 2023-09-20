@@ -1,30 +1,32 @@
 import React from "react";
-import { HashRouter as Router, Navigate, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
-import constants from "./utils/constants";
+import { PUBLIC_ROUTES } from "./utils/constants/routes";
+
+import WithRedirect from "./components/hoc/withRedirect";
 
 function Navigation() {
   return (
     <Router>
-      <Routes>
-        {Object.keys(constants.routes.PUBLIC_ROUTES).map((routeKey) => {
-          const { element: Element, layout: Layout } = constants.routes.PUBLIC_ROUTES[routeKey];
+      <WithRedirect>
+        <Routes>
+          {Object.keys(PUBLIC_ROUTES).map((routeKey) => {
+            const { element: Element, layout: Layout } = PUBLIC_ROUTES[routeKey];
 
-          return (
-            <Route
-              key={routeKey}
-              path={routeKey}
-              element={
-                <Layout>
-                  <Element />
-                </Layout>
-              }
-            />
-          );
-        })}
-
-        <Route path='*' element={<Navigate to={constants.routes.ROOT} />} />
-      </Routes>
+            return (
+              <Route
+                key={routeKey}
+                path={routeKey}
+                element={
+                  <Layout>
+                    <Element />
+                  </Layout>
+                }
+              />
+            );
+          })}
+        </Routes>
+      </WithRedirect>
     </Router>
   );
 }

@@ -1,0 +1,35 @@
+@import "../../../styles/mixins.scss";
+@import "../../../styles/variables.scss";
+
+.container {
+    height: 100vh;
+}
+
+.content {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 80px;
+    padding-left: 40px;
+    padding-right: 40px;
+    box-sizing: border-box;
+    color: $carbon;
+}
+
+.title {
+    font-size: 90px;
+    text-align: center;
+    @include fraunces-400;
+}
+
+.description {
+    font-size: 18px;
+    line-height: 24px;
+}
