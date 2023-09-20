@@ -19,7 +19,8 @@
     backdrop-filter: blur(25px);
 
     &:hover {
-        .navContainer {
+        .navContainer,
+        .content {
             max-height: 400px;
         }
 
@@ -34,9 +35,12 @@
 
 .content {
     min-width: 100%;
-    flex: 1;
+    min-height: 20px;
+    max-height: 20px;
     display: flex;
     justify-content: space-between;
+    flex: 1;
+    transition: all 0.3s ease;
 }
 
 .navContainer {
@@ -46,8 +50,7 @@
     flex-direction: column;
     justify-content: center;
     position: relative;
-    top: 4px;
-    transition: all 0.25s ease;
+    transition: all 0.3s ease;
 }
 
 .nav {
@@ -97,5 +100,7 @@
 .title {
     font-size: 22px;
     color: $carbon;
+    position: relative;
+    top: -4px;
     @include body-serif;
 }
