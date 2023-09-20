@@ -1,8 +1,15 @@
 import React from "react";
+import { nanoid } from "nanoid";
+
+import SvgIcon from "../../shared/SvgIcon";
 
 import styles from "./index.module.scss";
 
 function Hero() {
+  const handleScroll = () => {
+    window.scrollTo({ top: window.innerHeight, behavior: "smooth" });
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles.content}>
@@ -14,7 +21,15 @@ function Hero() {
             over the world. Belletriq produce, release music and high-quality sound FX.
           </p>
         </div>
+
+        <SvgIcon type="arrow" className={styles.arrow} onClick={handleScroll} />
       </div>
+
+      {Array(4)
+        .fill(true)
+        .map((el) => (
+          <SvgIcon key={`${el}_${nanoid()}`} type="plus" className={styles.plus} />
+        ))}
     </div>
   );
 }

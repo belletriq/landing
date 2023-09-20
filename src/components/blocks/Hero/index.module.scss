@@ -3,33 +3,92 @@
 
 .container {
     height: 100vh;
-}
-
-.content {
-    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
+.content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 96px;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
 .text {
     display: flex;
     flex-direction: column;
-    align-items: center;
     gap: 80px;
-    padding-left: 40px;
-    padding-right: 40px;
     box-sizing: border-box;
     color: $carbon;
 }
 
 .title {
     font-size: 90px;
-    text-align: center;
     @include fraunces-400;
 }
 
 .description {
     font-size: 18px;
     line-height: 24px;
+}
+
+.arrow {
+    width: 14px !important;
+    height: 14px !important;
+}
+
+.plus {
+    display: none;
+}
+
+@include tablet-width {
+    .content {
+        display: grid;
+        grid-template-columns: 1fr 14px;
+        padding-left: 110px;
+        padding-right: 110px;
+    }
+
+    .text {
+        gap: 100px;
+        padding-top: 14px;
+    }
+
+    .title {
+        font-size: 140px;
+    }
+
+    .description {
+        width: 74%;
+        line-height: 23px;
+    }
+
+    .plus {
+        display: block;
+        position: absolute;
+
+        &:nth-of-type(1) {
+            top: 14px;
+            left: 20px;
+        }
+
+        &:nth-of-type(2) {
+            top: 14px;
+            right: 20px;
+        }
+
+        &:nth-of-type(3) {
+            bottom: 46px;
+            left: 20px;
+        }
+
+        &:nth-of-type(1) {
+            bottom: 46px;
+            right: 20px;
+        }
+    }
 }
