@@ -107,12 +107,12 @@
         }
 
         &:nth-of-type(3) {
-            bottom: 20px;
+            bottom: 50px;
             left: 20px;
         }
 
         &:nth-of-type(4) {
-            bottom: 20px;
+            bottom: 50px;
             right: 20px;
         }
     }
@@ -144,7 +144,8 @@
         display: flex;
         justify-content: center;
         align-items: flex-end;
-        padding-bottom: 30vh;
+        padding-bottom: 20vh;
+        box-sizing: border-box;
     }
 
     .arrow {
@@ -161,5 +162,27 @@
         display: flex;
         gap: 132px;
         position: absolute;
+    }
+
+    .plus {
+        &:nth-of-type(1) {
+            top: 20px;
+            left: 20px;
+        }
+
+        &:nth-of-type(2) {
+            top: 20px;
+            right: 20px;
+        }
+
+        &:nth-of-type(3) {
+            bottom: 20px;
+            left: 20px;
+        }
+
+        &:nth-of-type(4) {
+            bottom: 20px;
+            right: 20px;
+        }
     }
 }
