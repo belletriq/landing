@@ -5,7 +5,7 @@ import Hero from "../../blocks/Hero";
 
 function MainPage() {
   return (
-    <BlockLayout>
+    <BlockLayout variant="padding">
       <Hero />
     </BlockLayout>
   );

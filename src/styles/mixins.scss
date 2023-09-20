@@ -19,6 +19,41 @@
     }
 }
 
+// LAYOUT
+@mixin responsive-container {
+    transition: width 0.3s ease;
+
+    @include mobile-width {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    @include desktop-width {
+        display: block;
+        padding-left: 18%;
+    }
+}
+
+@mixin responsive-width {
+    transition: width 0.3s ease;
+
+    @include mobile-width {
+        max-width: 320px;
+        width: 320px;
+    }
+
+    @include tablet-width {
+        max-width: 614px;
+        width: 614px;
+    }
+
+    @include desktop-width {
+        max-width: 738px;
+        width: 738px;
+    }
+}
+
 // FONTS
 @mixin fraunces-300 {
     font-family: "Fraunces", serif;

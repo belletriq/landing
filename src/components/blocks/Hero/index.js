@@ -28,7 +28,9 @@ function Hero() {
             We are the Ukrainian based artistic community which unites likeminded people from all
             over the world. Belletriq produce, release music and high-quality sound FX.
           </p>
+        </div>
 
+        <div className={styles.arrowContainer}>
           <SvgIcon type="arrow" className={styles.arrow} onClick={handleScroll} />
         </div>
       </div>
