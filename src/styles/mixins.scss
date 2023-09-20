@@ -67,5 +67,6 @@
 }
 
 @mixin body-serif {
+    letter-spacing: -0.44px;
     @include fraunces-300;
 }

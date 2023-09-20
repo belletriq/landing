@@ -18,6 +18,11 @@
     &::-webkit-scrollbar-thumb:hover {
         background: #555;
     }
+
+    &::selection {
+        background-color: $lava;
+        color: $salt;
+    }
 }
 
 html,

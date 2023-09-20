@@ -13,7 +13,7 @@
     position: relative;
     z-index: 1;
     background: no-repeat center 280px url(../../../assets/images/main-background-mobile.png);
-    background-size: 100%;
+    background-size: cover;
     transition: all 0.3s ease;
 }
 
@@ -21,6 +21,15 @@
     .content {
         background-image: url(../../../assets/images/main-background-tablet.png);
         background-position: 42% 34px;
-        background-size: 72%;
+        background-size: contain;
+    }
+}
+
+@include desktop-width {
+    .content {
+        background-image: url(../../../assets/images/main-background-desktop.png);
+        background-position: 100% 0;
+        display: grid;
+        grid-template-columns: 300px 1fr;
     }
 }

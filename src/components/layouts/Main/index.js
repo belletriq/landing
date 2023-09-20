@@ -7,15 +7,15 @@ import styles from "./index.module.scss";
 
 function MainLayout({ children }) {
   return (
-    <>
-      <Header />
+    <main className={styles.container}>
+      <div className={styles.content}>
+        <Header />
 
-      <main className={styles.container}>
-        <div className={styles.content}>{children}</div>
+        <div>{children}</div>
+      </div>
 
-        <Background />
-      </main>
-    </>
+      <Background />
+    </main>
   );
 }
 

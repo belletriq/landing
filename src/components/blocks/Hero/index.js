@@ -4,6 +4,8 @@ import { nanoid } from "nanoid";
 import SvgIcon from "../../shared/SvgIcon";
 
 import styles from "./index.module.scss";
+import HEADER_NAV_ITEMS from "../../../utils/constants/header";
+import NavLink from "../../shared/NavLink";
 
 function Hero() {
   const handleScroll = () => {
@@ -13,6 +15,12 @@ function Hero() {
   return (
     <div className={styles.container}>
       <div className={styles.content}>
+        <nav className={styles.nav}>
+          {Object.values(HEADER_NAV_ITEMS).map(({ path, title, type }) => (
+            <NavLink key={path} path={path} type={type} text={title} />
+          ))}
+        </nav>
+
         <div className={styles.text}>
           <h1 className={styles.title}>belletriq</h1>
 
@@ -20,9 +28,9 @@ function Hero() {
             We are the Ukrainian based artistic community which unites likeminded people from all
             over the world. Belletriq produce, release music and high-quality sound FX.
           </p>
-        </div>
 
-        <SvgIcon type="arrow" className={styles.arrow} onClick={handleScroll} />
+          <SvgIcon type="arrow" className={styles.arrow} onClick={handleScroll} />
+        </div>
       </div>
 
       {Array(4)

@@ -1,6 +1,103 @@
 @import "../../../styles/mixins.scss";
 @import "../../../styles/variables.scss";
 
+@mixin button-corner-height {
+    top: unset;
+    left: 0;
+
+    &:first-of-type {
+        top: 0;
+        border-width: 2px 2px 0 0;
+    }
+
+    &:last-of-type {
+        bottom: 0;
+        border-width: 0 0 2px 2px;
+    }
+}
+
+@mixin button-corner-width {
+    top: 0;
+    left: unset;
+
+    &:first-of-type {
+        right: 0;
+    }
+
+    &:last-of-type {
+        left: 0;
+    }
+}
+
+@mixin nav-container-height {
+    min-width: unset;
+    max-width: unset;
+    min-height: 24px;
+    max-height: 24px;
+    flex-direction: column;
+    justify-content: center;
+}
+
+@mixin nav-container-width {
+    min-width: 24px;
+    max-width: 24px;
+    min-height: unset;
+    max-height: unset;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+@mixin nav-height {
+    max-width: unset;
+    max-height: 0;
+    flex-direction: column;
+}
+
+@mixin nav-width {
+    max-width: 0;
+    max-height: 24px;
+    flex-direction: row;
+}
+
+@mixin hover-height {
+    .navContainer,
+    .content {
+        max-width: unset;
+        max-height: 400px;
+    }
+
+    .nav {
+        max-width: unset;
+        max-height: 400px;
+        padding-top: 60px;
+        padding-right: 0;
+        padding-bottom: 60px;
+        padding-left: 0;
+        opacity: 1;
+    }
+}
+
+@mixin hover-width {
+    background: rgba(245, 241, 240, 0.3);
+    backdrop-filter: blur(25px);
+
+    .navContainer,
+    .content {
+        max-width: 100%;
+        max-height: 24px;
+    }
+
+    .nav {
+        max-width: 400px;
+        max-height: unset;
+        padding-top: 0;
+        padding-right: 60px;
+        padding-bottom: 0;
+        padding-left: 60px;
+        opacity: 1;
+    }
+}
+
 .container {
     width: 100%;
     display: flex;
@@ -20,17 +117,7 @@
     transition: all 0.3s ease, backdrop-filter 0s;
 
     &:hover {
-        .navContainer,
-        .content {
-            max-height: 400px;
-        }
-
-        .nav {
-            max-height: 400px;
-            padding-top: 60px;
-            padding-bottom: 60px;
-            opacity: 1;
-        }
+        @include hover-height;
     }
 }
 
@@ -45,65 +132,53 @@
 }
 
 .navContainer {
-    min-height: 24px;
-    max-height: 24px;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
     position: relative;
     transition: all 0.25s ease;
+    @include nav-container-height;
 }
 
 .nav {
-    max-height: 0;
-    overflow: hidden;
     opacity: 0;
+    overflow: hidden;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     gap: 40px;
     transition: all 0.3s ease;
+    @include nav-height;
 }
 
-.menuButton {
+.buttonCorner {
     width: 24px;
     height: 24px;
     position: absolute;
-    left: 0;
     box-sizing: border-box;
     border: 0 solid $carbon;
     pointer-events: none;
     transition: all 0.3s ease;
-
-    &:first-of-type {
-        top: 0;
-        border-width: 2px 2px 0 0;
-    }
-
-    &:last-of-type {
-        bottom: 0;
-        border-width: 0 0 2px 2px;
-    }
+    @include button-corner-height;
 }
 
-.link {
-    font-size: 18px;
-    text-decoration: none;
-    color: $carbon;
-    @include body-2;
-
-    &_active {
-        color: $salt;
-        font-weight: 700;
-    }
-}
-
-.title {
+.mobileTitle,
+.desktopTitle {
     font-size: 22px;
     color: $carbon;
     position: relative;
     top: -4px;
     @include body-serif;
+}
+
+.desktopTitle {
+    display: none;
+}
+
+.rightBorder {
+    width: 2px;
+    height: 58%;
+    background: $carbon;
+    position: absolute;
+    right: 0;
+    display: none;
 }
 
 @include tablet-width {
@@ -116,51 +191,69 @@
         padding-left: 110px;
 
         &:hover {
-            background: rgba(245, 241, 240, 0.3);
-            backdrop-filter: blur(25px);
-
-            .navContainer,
-            .content {
-                max-width: 100%;
-                max-height: 24px;
-            }
-
-            .nav {
-                max-width: 400px;
-                padding-top: 0;
-                padding-right: 60px;
-                padding-bottom: 0;
-                padding-left: 60px;
-                opacity: 1;
-            }
+            @include hover-width;
         }
     }
 
     .navContainer {
-        min-width: 24px;
-        max-width: 24px;
-        flex-direction: row;
-        justify-content: space-between;
+        @include nav-container-width;
     }
 
     .nav {
-        max-width: 0;
-        max-height: 24px;
-        flex-direction: row;
-        justify-content: center;
-        gap: 40px;
+        @include nav-width;
     }
 
-    .menuButton {
-        top: 0;
-        left: unset;
+    .buttonCorner {
+        @include button-corner-width;
+    }
+}
 
-        &:first-of-type {
-            right: 0;
-        }
+@include desktop-width {
+    .container {
+        position: sticky;
 
-        &:last-of-type {
-            left: 0;
+        &:hover {
+            @include hover-height;
+            background: transparent;
+            backdrop-filter: blur(0);
         }
+    }
+
+    .content {
+        width: 100%;
+        min-height: 100%;
+        max-height: 100%;
+        position: absolute;
+        flex-direction: column;
+        justify-content: space-between;
+        padding-top: 62px;
+        padding-bottom: 120px;
+        padding-left: 80px;
+        box-sizing: border-box;
+    }
+
+    .navContainer {
+        @include nav-container-height;
+    }
+
+    .nav {
+        align-items: flex-start;
+        @include nav-height;
+    }
+
+    .buttonCorner {
+        @include button-corner-height;
+    }
+
+    .mobileTitle {
+        display: none;
+    }
+
+    .desktopTitle {
+        display: block;
+    }
+
+    .rightBorder {
+        display: block;
     }
 }

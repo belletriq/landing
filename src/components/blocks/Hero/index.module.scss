@@ -4,11 +4,11 @@
 .container {
     height: 100vh;
     display: flex;
-    justify-content: center;
     align-items: center;
 }
 
 .content {
+    min-height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -17,6 +17,8 @@
     padding-left: 40px;
     padding-right: 40px;
     transition: all 0.3s ease;
+    position: relative;
+    box-sizing: border-box;
 }
 
 .text {
@@ -26,6 +28,7 @@
     box-sizing: border-box;
     color: $carbon;
     transition: all 0.3s ease;
+    position: relative;
 }
 
 .title {
@@ -40,8 +43,30 @@
 }
 
 .arrow {
-    width: 14px !important;
-    height: 14px !important;
+    width: 14px;
+    height: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: absolute;
+    bottom: -100px;
+    right: 0;
+    transform: translate(100%, 0);
+
+    path {
+        transition: all 0.3s ease;
+    }
+
+    &:hover {
+        transform: translate(100%, 0) rotate(-90deg);
+
+        path {
+            stroke: $lava;
+        }
+    }
+}
+
+.nav {
+    display: none;
 }
 
 .plus {
@@ -50,8 +75,8 @@
 
 @include tablet-width {
     .content {
-        display: grid;
-        grid-template-columns: 1fr 14px;
+        width: min-content;
+        min-width: 810px;
         padding-left: 110px;
         padding-right: 110px;
     }
@@ -66,7 +91,7 @@
     }
 
     .description {
-        width: 74%;
+        width: 60%;
         line-height: 23px;
     }
 
@@ -93,5 +118,55 @@
             bottom: 46px;
             right: 20px;
         }
+    }
+
+    .arrow {
+        bottom: 0;
+    }
+}
+
+@include desktop-width {
+    .content {
+        width: min-content;
+        min-width: 800px;
+        padding-left: 200px;
+        padding-right: 0;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 0;
+    }
+
+    .text {
+        gap: 110px;
+        padding-top: 26px;
+        position: relative;
+    }
+
+    .title {
+        font-size: 178px;
+    }
+
+    .description {
+        width: 66%;
+    }
+
+    .arrow {
+        width: 23px;
+        height: 23px;
+        right: -60px;
+        bottom: -90px;
+    }
+
+    .nav {
+        min-width: 100%;
+        display: flex;
+        align-items: center;
+        gap: 120px;
+        position: absolute;
+        top: 0;
+        left: 200px;
+        padding-top: 62px;
+        padding-bottom: 62px;
     }
 }

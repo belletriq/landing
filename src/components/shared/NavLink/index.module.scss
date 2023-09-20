@@ -1,0 +1,19 @@
+@import "../../../styles/variables.scss";
+@import "../../../styles/mixins.scss";
+
+.link {
+    font-size: 18px;
+    text-decoration: none;
+    color: $carbon;
+    @include body-2;
+
+    &:hover,
+    &_active {
+        color: $salt;
+        font-weight: 700;
+    }
+
+    &:hover {
+        transition: all 0.3s ease;
+    }
+}
