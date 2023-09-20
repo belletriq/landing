@@ -17,7 +17,7 @@
     box-sizing: border-box;
     background: rgba(245, 241, 240, 0.3);
     backdrop-filter: blur(25px);
-    transition: background 0.3s ease;
+    transition: all 0.3s ease, backdrop-filter 0s;
 
     &:hover {
         .navContainer,

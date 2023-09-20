@@ -16,6 +16,7 @@
     gap: 96px;
     padding-left: 40px;
     padding-right: 40px;
+    transition: all 0.3s ease;
 }
 
 .text {
@@ -24,10 +25,12 @@
     gap: 80px;
     box-sizing: border-box;
     color: $carbon;
+    transition: all 0.3s ease;
 }
 
 .title {
     font-size: 90px;
+    transition: all 0.3s ease;
     @include fraunces-400;
 }
 
