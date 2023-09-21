@@ -2,7 +2,7 @@
 
 // BREAK POINTS
 @mixin mobile-width {
-    @media screen and (min-width: $mobile) {
+    @media screen and (max-width: $tablet) {
         @content;
     }
 }
